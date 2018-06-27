@@ -3,10 +3,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 
-// Require request and cheerio. This makes the scraping possible
-const request = require("request");
-const cheerio = require("cheerio");
-
 // Initialize Express
 const app = express();
 

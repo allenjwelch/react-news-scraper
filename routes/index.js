@@ -3,14 +3,14 @@ const router = require("express").Router();
 const apiRoutes = require("./api");
 
 // API Routes
-// router.use("/", apiRoutes);
-
-// ReactDOM.render(<App />, document.getElementById('root'));
-// registerServiceWorker();
+router.use("/api", apiRoutes);
 
 // If no API routes are hit, send the React app
 router.use(function(req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
+
+// ReactDOM.render(<App />, document.getElementById('root'));
+// registerServiceWorker();
 
 module.exports = router;

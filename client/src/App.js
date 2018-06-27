@@ -19,7 +19,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={NoArticles} />
             <Route exact path="/articles/scraped" component={ScrapedArticles} />
-            <Route exact path="/articles/saved" component={SavedArticles} />
+            <Route exact path="/articles" component={SavedArticles} />
             <Route component={NoArticles} />
           </Switch>
           <Footer />
