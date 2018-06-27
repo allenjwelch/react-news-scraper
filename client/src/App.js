@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
+import ScrapedArticles from "./pages/ScrapedArticles"; 
+import SavedArticles from "./pages/SavedArticles"; 
+import NoArticles from "./pages/NoArticles"; 
+import Nav from "./components/Navbar";
+import Header from "./components/Header";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Router>
+        <div className="App">
+          <Nav />
+          <Header />
+          <Switch>
+            <Route exact path="/" component={NoArticles} />
+            <Route exact path="/articles/scraped" component={ScrapedArticles} />
+            <Route exact path="/articles/saved" component={SavedArticles} />
+            <Route component={NoArticles} />
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }
