@@ -2,13 +2,14 @@ import React from "react";
 
 const styles = {
   main: {
-    
+    padding: "5px",
+    fontFamily: "'IM Fell Great Primer', serif",
   }
 }
 
 const NoArticles = props => (
-  <div class="articles">
-    <h5 class="noArt cyan darken-3 white-text center">You do not have any articles...<br />Click the <i>Scrape News</i> button above to view articles</h5>
+  <div className="articles">
+    <h5 className="noArt cyan darken-3 white-text center" style={styles.main}>You do not have any articles...<br />Click the <i>Scrape News</i> button above to view articles</h5>
   </div>
 );
 
