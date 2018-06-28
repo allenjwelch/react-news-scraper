@@ -6,7 +6,7 @@ import SavedArticles from "./pages/SavedArticles";
 import NoArticles from "./pages/NoArticles"; 
 import Nav from "./components/Navbar";
 import Header from "./components/Header";
-import Main from "./components/Main";
+// import Main from "./components/Main";
 import Footer from "./components/Footer";
 
 class App extends Component {

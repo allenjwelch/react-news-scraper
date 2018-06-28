@@ -26,7 +26,7 @@ export default {
     return axios.post("/api/articles/notes", note);
   },
   // Updates note for an article
-  saveNote: function(note) {
+  updateNote: function(note) {
     return axios.put("/api/articles/notes", note);
   },
   deleteNote: function(id) {

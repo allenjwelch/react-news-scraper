@@ -28,11 +28,11 @@ const styles = {
 
 const Header = () => (
   <div className="parallax-container" style={styles.parallaxContainer}>
-    <div className="parallax"><img id="parallaxImg" style={styles.parallaxImg} src="../images/newspaper.jpg" /></div>
+    <div className="parallax"><img id="parallaxImg" style={styles.parallaxImg} src="../images/newspaper.jpg" alt="newspaper"/></div>
     <div className="title col s8 center" style={styles.title}>
       <h1 className="center-align" id="titleText" style={styles.titleText}>News Scraper</h1>
       <h4 className="center-align" id="subText" style={styles.subText}>New York Times</h4>
-      <a id="scrapeBtn" className="waves-effect waves-light btn hide-on-med-and-up"><i className="material-icons right">file_download</i>Scrape News</a>
+      <a id="scrapeBtn" className="waves-effect waves-light btn" href="/articles/scraped"><i className="material-icons right">file_download</i>Scrape News</a>
     </div>
   </div>
 ); 

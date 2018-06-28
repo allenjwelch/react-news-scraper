@@ -1,10 +1,10 @@
 import React from "react";
 
-const styles = {
-  main: {
+// const styles = {
+//   main: {
     
-  }
-}
+//   }
+// }
 
 const Main = props => (
   <div class="articles">

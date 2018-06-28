@@ -23,12 +23,13 @@ class ScrapedArticles extends Component {
     API.getScrape()
       .then(res => {
         let reducedData = [];
-        for (this.i=10; this.i < 31; this.i++) {
-        reducedData.push(res.data[this.i]);
-        }; 
+        let i = 10; 
+        for (i; i < 30; i++) {
+          reducedData.push(res.data[i]);
+        };  
+        this.setState({ articles: reducedData, title: "", summary: "", link: "" });
+        // console.log(this.state.articles);
       })
-      .then(this.setState({ articles: this.reducedData, title: "", summary: "", link: "" })
-      )
       .catch(err => console.log(err));
   };
 
@@ -44,9 +45,9 @@ class ScrapedArticles extends Component {
               </ArticleCard>
             ))}
           </div>
-          ) : (
-            <h3>No Results to Display</h3>
-          )
+        ) : (
+          <h3>No Results to Display</h3>
+        )
         }
       </div>
     
