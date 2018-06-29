@@ -6,7 +6,6 @@ const cheerio = require("cheerio");
 // Defining methods for the ArticlesController
 module.exports = {
   scrape: function(req, res) {
-    //! NOT SURE HOW TO CHANGE FROM JQUERY
     request("https://www.nytimes.com/section/us", function(error, response, html) {
       let $ = cheerio.load(html);
       let results = [];
@@ -21,7 +20,7 @@ module.exports = {
           link: link
         });      
       });
-      console.log("articles scraped"); 
+      // console.log("articles scraped"); 
       res.json(results); 
     })
   },

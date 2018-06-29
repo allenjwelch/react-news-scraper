@@ -28,6 +28,7 @@ class ScrapedArticles extends Component {
           reducedData.push(res.data[i]);
         };  
         this.setState({ articles: reducedData, title: "", summary: "", link: "" });
+        // M.toast({html: '20 Articles Scraped!'})
         // console.log(this.state.articles);
       })
       .catch(err => console.log(err));
@@ -36,7 +37,7 @@ class ScrapedArticles extends Component {
   render() {
     return (
       <div>
-        <h2>ScrapedArticles</h2>
+        {/* <h2>ScrapedArticles</h2> */}
         {this.state.articles.length ? (
           <div className="articleCards">
             {this.state.articles.map(article => (
