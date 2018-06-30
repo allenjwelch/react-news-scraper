@@ -15,19 +15,19 @@ export default {
   },
   // Gets an article by id to populate note
   getArticle: function(id) {
-    return axios.get("/api/articles" + id);
+    return axios.get("/api/articles/" + id);
   }, 
   // Deletes the article with the given id
   deleteArticle: function(id) {
     return axios.delete("/api/articles/" + id);
   },
   // Creates a new note for an article
-  saveNote: function(note) {
-    return axios.post("/api/articles/notes", note);
+  saveNote: function(noteData) {
+    return axios.post("/api/articles/notes/" + noteData.id, noteData);
   },
   // Updates note for an article
-  updateNote: function(note) {
-    return axios.put("/api/articles/notes", note);
+  updateNote: function(noteData) {
+    return axios.put("/api/articles/notes" + noteData.id, noteData);
   },
   deleteNote: function(id) {
     return axios.delete("/api/articles/notes" + id);

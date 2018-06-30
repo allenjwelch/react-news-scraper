@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import API from "../utils/API";
 import ArticleCard from "../components/ArticleCard";
+import { M } from 'react-materialize';
+
 
 
 // Require request and cheerio. This makes the scraping possible
@@ -34,7 +36,7 @@ class ScrapedArticles extends Component {
           reducedData.push(res.data[i]);
         };  
         this.setState({ articles: reducedData, title: "", summary: "", link: "" });
-        // M.toast({html: '20 Articles Scraped!'})
+        M.toast({html: '20 Articles Scraped!'})
         // console.log(this.state.articles);
       })
       .catch(err => console.log(err));
@@ -43,7 +45,7 @@ class ScrapedArticles extends Component {
   render() {
     return (
       <div>
-        <h2 style={this.styles.head}>ScrapedArticles</h2>
+        <h2 style={this.styles.head}>Scraped Articles</h2>
         {this.state.articles.length ? (
           <div className="articleCards">
             {this.state.articles.map(article => (

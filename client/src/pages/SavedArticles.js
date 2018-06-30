@@ -15,15 +15,13 @@ class SavedArticles extends Component {
     link: "", 
     id: "", 
     show: false, 
+    note: "",
   };
 
   styles = {
     head: {
       fontFamily: "'IM Fell DW Pica SC', serif",
     }, 
-    buttons: {
-      margins: "20px"
-    }
   }
 
   showNote = () => {
@@ -42,7 +40,7 @@ class SavedArticles extends Component {
     API.getAllArticles()
       .then(res => {
         this.setState({ articles: res.data, title: "", summary: "", link: "" , id: ""});
-        console.log(this.state.articles);
+        // console.log(this.state.articles);
       })
       .catch(err => console.log(err));
   }; 
@@ -56,13 +54,19 @@ class SavedArticles extends Component {
 
   note = id => {
     API.getArticle(id)
+      //TODO set state of Note using res. 
+      .then(res => {
+        this.setState({ note: res.data, title: "", body: ""})
+        console.log(this.state.articles)
+      })
       .then(this.showNote())
-      // .then
-  }
+      .catch(err => console.log(err));
+    }
 
-  saveNote(id) {
-    console.log(id); 
-    API.saveNote(id)
+  saveNote(noteData) {
+    console.log(noteData); 
+    //! 404 ERROR
+    API.updateNote(noteData)
       .then(this.hideNote())
       // .then(res => this.loadArticles())
       .catch(err => console.log(err));
@@ -71,17 +75,27 @@ class SavedArticles extends Component {
     render() {
       return (
         <div>
-        <h2 style={this.styles.head}>SavedArticles</h2>
+        <h2 style={this.styles.head}>Saved Articles</h2>
         {this.state.articles.length ? (
           <div className="articleCards">
             {this.state.articles.map(article => (
               <SavedArticleCard key={article.title}
                 {...article}>
                 <DeleteArticleBtn style={this.styles.buttons} onClick={() => this.deleteArt(article._id)} />
-                <AddNoteBtn style={this.styles.buttons} onClick={() => this.note(article._id)} />
-                  <Note show={this.state.show} handleClose={this.hideNote} articleTitle={article.title}>
-                    <SaveNoteBtn onClick={() => this.saveNote(article._id)} />
-                  </Note>        
+                <AddNoteBtn onClick={() => this.note(article._id)} />
+                  <Note {...article} show={this.state.show} handleClose={this.hideNote}> 
+                    <SaveNoteBtn {...article} onClick={() => {
+                      let noteTitle = document.getElementById("titleInput").value;
+                      let noteBody = document.getElementById("bodyInput").value;
+                      //! INPUTS NOT PULLING FROM NOTES
+                      let newNote = {
+                        id: article._id,
+                        title: noteTitle,
+                        body: noteBody,
+                      }
+                      this.saveNote(newNote)
+                    }} />
+                  </Note>
               </SavedArticleCard>
             ))}
           </div>

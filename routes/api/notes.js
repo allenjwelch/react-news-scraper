@@ -3,7 +3,7 @@ const notesController = require("../../controllers/notesController");
 
 //* Matches with "/api/articles/notes"
 router
-  .route("/notes")
+  .route("/notes/:id")
     .post(notesController.create)
     .put(notesController.update)
     .delete(notesController.remove); 
