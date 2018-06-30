@@ -1,14 +1,28 @@
 import React from "react";
 
 const styles = {
-  parallaxContainer: {
+  container: {
     margin: "0",
     width: "100%",
+    height: "100%",
+    zIndex: "0",
+    // height: "50%",
+    // width: "50%",
+    // backgroundImage: "url(../images/newspaper.jpg)",
+    backgroundSize: "cover",
   }, 
   parallaxImg: {
-    height: "100%",
-    width: "100%",
-    background: "url(../images/newspaper.jpg)",
+    // position: "fixed", 
+    // top: "0", 
+    // left: "0", 
+    zIndex: "0",
+    height: "50%",
+    width: "50%",
+    backgroundImage: "url(../images/newspaper.jpg)",
+    backgroundSize: "cover",
+
+    // background-position: right top;
+
   }, 
   title: {
     margin: "150px auto",
@@ -27,8 +41,8 @@ const styles = {
 }
 
 const Header = () => (
-  <div className="parallax-container" style={styles.parallaxContainer}>
-    <div className="parallax"><img id="parallaxImg" style={styles.parallaxImg} src="../images/newspaper.jpg" alt="newspaper"/></div>
+  <div className="container" style={styles.container}>
+    {/* <div className="image"><img id="parallaxImg" alt="newspaper"/></div> */}
     <div className="title col s8 center" style={styles.title}>
       <h1 className="center-align" id="titleText" style={styles.titleText}>News Scraper</h1>
       <h4 className="center-align" id="subText" style={styles.subText}>New York Times</h4>

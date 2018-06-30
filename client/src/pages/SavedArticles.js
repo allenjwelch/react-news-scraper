@@ -1,8 +1,10 @@
 import React, {Component} from "react";
 import API from "../utils/API";
 import SavedArticleCard from "../components/SavedArticleCard";
-import DeleteArticleBtn from "../components/SavedArticle Btns/DeleteArticleBtn"; 
-import AddNoteBtn from "../components/SavedArticle Btns/AddNoteBtn"; 
+import DeleteArticleBtn from "../components/Buttons/DeleteArticleBtn"; 
+import AddNoteBtn from "../components/Buttons/AddNoteBtn";  
+import SaveNoteBtn from "../components/Buttons/SaveNoteBtn";  
+import Note from "../components/Notes/Note"; 
 
 
 class SavedArticles extends Component {
@@ -11,14 +13,26 @@ class SavedArticles extends Component {
     title: "",
     summary: "",
     link: "", 
-    id: ""
+    id: "", 
+    show: false, 
   };
 
   styles = {
     head: {
       fontFamily: "'IM Fell DW Pica SC', serif",
+    }, 
+    buttons: {
+      margins: "20px"
     }
   }
+
+  showNote = () => {
+    this.setState({ show: true });
+  };
+
+  hideNote = () => {
+    this.setState({ show: false });
+  };
 
   componentDidMount() {
     this.loadArticles();
@@ -41,8 +55,17 @@ class SavedArticles extends Component {
   };
 
   note = id => {
+    API.getArticle(id)
+      .then(this.showNote())
+      // .then
+  }
+
+  saveNote(id) {
     console.log(id); 
-    // API.saveArticle(addArticle)
+    API.saveNote(id)
+      .then(this.hideNote())
+      // .then(res => this.loadArticles())
+      .catch(err => console.log(err));
   };
 
     render() {
@@ -54,8 +77,11 @@ class SavedArticles extends Component {
             {this.state.articles.map(article => (
               <SavedArticleCard key={article.title}
                 {...article}>
-                <DeleteArticleBtn onClick={() => this.deleteArt(article._id)} />
-                <AddNoteBtn onClick={() => this.note(article._id)} />
+                <DeleteArticleBtn style={this.styles.buttons} onClick={() => this.deleteArt(article._id)} />
+                <AddNoteBtn style={this.styles.buttons} onClick={() => this.note(article._id)} />
+                  <Note show={this.state.show} handleClose={this.hideNote} articleTitle={article.title}>
+                    <SaveNoteBtn onClick={() => this.saveNote(article._id)} />
+                  </Note>        
               </SavedArticleCard>
             ))}
           </div>
@@ -64,6 +90,7 @@ class SavedArticles extends Component {
         )
         }
         </div>
+
 
       )
     }
