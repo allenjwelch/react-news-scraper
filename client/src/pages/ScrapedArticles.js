@@ -15,6 +15,12 @@ class ScrapedArticles extends Component {
     link: ""
   };
 
+  styles = {
+    head: {
+      fontFamily: "'IM Fell DW Pica SC', serif",
+    }
+  }
+
   componentDidMount() {
     this.loadArticles();
   }
@@ -37,7 +43,7 @@ class ScrapedArticles extends Component {
   render() {
     return (
       <div>
-        {/* <h2>ScrapedArticles</h2> */}
+        <h2 style={this.styles.head}>ScrapedArticles</h2>
         {this.state.articles.length ? (
           <div className="articleCards">
             {this.state.articles.map(article => (
@@ -47,7 +53,7 @@ class ScrapedArticles extends Component {
             ))}
           </div>
         ) : (
-          <h3>No Results to Display</h3>
+          <h3 style={this.styles.head}>No Results to Display</h3>
         )
         }
       </div>
